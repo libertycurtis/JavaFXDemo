@@ -2,6 +2,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
@@ -15,8 +16,10 @@ public class SceneController
     /* These FXML variables exactly corrispond to the controls that make up the scene, as designed in Scene 
      * Builder. It is important to ensure that these match perfectly or the controls won't be interactive. */
     @FXML   private Pane backgroundPane;    
-    @FXML   private Button yesButton;
-    @FXML   private Button noButton;
+    @FXML   private Label donutsLabel;    
+    @FXML   private Button editButton;
+    @FXML   private Button deleteButton;
+    @FXML   private Button addButton;
     @FXML   private Button exitButton;
     @FXML   private ListView listView;
 
@@ -43,8 +46,9 @@ public class SceneController
         try
         {
         	assert backgroundPane != null : "Can't find background pane.";
-        	assert yesButton != null : "Can't find yes button.";
-        	assert noButton != null : "Can't find yes button.";
+        	assert editButton != null : "Can't find edit button.";
+        	assert deleteButton != null : "Can't find delete button.";
+        	assert addButton != null : "Can't find add button.";
         	assert exitButton != null : "Can't find exit button.";
             assert listView != null : "Can't find list box.";
         }
@@ -57,8 +61,8 @@ public class SceneController
         /* Next, we load the list of fruit from the database and populate the listView. */
         System.out.println("Populating scene with items from the database...");        
         @SuppressWarnings("unchecked")
-        List<Fruit> targetList = listView.getItems();  // Grab a reference to the listView's current item list.
-        Fruit.readAll(targetList);                     // Hand over control to the fruit model to populate this list.
+        List<Donut> targetList = listView.getItems();  // Grab a reference to the listView's current item list.
+        Donut.readAll(targetList);                     // Hand over control to the fruit model to populate this list.
     }
 
     /* In order to catch stage events (the main example being the close (X) button being clicked) we need
@@ -80,16 +84,21 @@ public class SceneController
 
     /* The next three methods are event handlers for clicking on the buttons. 
      * The names of these methods are set in Scene Builder so they work automatically. */    
-    @FXML   void yesClicked()
+    @FXML   void editClicked()
     {
-        System.out.println("Yes was clicked!");        
+        System.out.println("Edit was clicked!");        
     }
 
-    @FXML   void noClicked()
+    @FXML   void addClicked()
     {
-        System.out.println("No was clicked!");
+        System.out.println("Add was clicked!");
     }
 
+    @FXML   void deleteClicked()
+    {
+        System.out.println("Delete was clicked!");
+    }
+    
     @FXML   void exitClicked()
     {
         System.out.println("Exit was clicked!");        
@@ -100,7 +109,7 @@ public class SceneController
      * item in the view is currently selected (if any) and outputs it to the console. */    
     @FXML   void listViewClicked()
     {
-        Fruit selectedItem = (Fruit) listView.getSelectionModel().getSelectedItem();
+        Donut selectedItem = (Donut) listView.getSelectionModel().getSelectedItem();
 
         if (selectedItem == null)
         {
