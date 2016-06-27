@@ -117,7 +117,7 @@ public class SceneController
         }
         else
         {
-            System.out.println(selectedItem + " (id: " + selectedItem.id + ") is selected.");
+            System.out.println(selectedItem + " (id: " + selectedItem.DonutId + ") is selected.");
         }
     }    
 

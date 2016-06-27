@@ -24,10 +24,10 @@ public class Application
     {
         try
         {         
-            database = new DatabaseConnection("Test.db");        // Initiate the database connection.
+            database = new DatabaseConnection("Doughnuts database.db");        // Initiate the database connection.
 
             /* Load the first fxml file that will create our first JavaFX scene. */
-            FXMLLoader loader = new FXMLLoader(Application.class.getResource("DemoScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(Application.class.getResource("sceneone.fxml"));
 
             /* Each scene requires a Window, called a stage. The following creates and displays the stage. */
             Stage stage = new Stage();
